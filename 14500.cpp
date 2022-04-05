@@ -8,13 +8,7 @@
 #include <vector>
 using namespace std;
 
-int N, M;
-int board[501][501];
-
-int dx[4] = {0, 0, 1, -1};
-int dy[4] = {-1, 1, 0, 0};
-
-vector<vector<string>> shapes = {
+vector<vector<string>> blocks = {
         {"1111"},
         {"11",
          "11"},
@@ -28,66 +22,73 @@ vector<vector<string>> shapes = {
          "010"}
 };
 
-vector<string> mirror(vector<string> shape) {
-    vector<string> ans(shape.size());
-    for(int i=0;i<shape.size();i++){
-        string tmp = shape[i];
+vector<string> mirror(vector<string>& b) {
+    vector<string> ans(b.size());
+    for(int i=0;i<b.size();i++){
+        string tmp(b[i]);
         reverse(tmp.begin(), tmp.end());
         ans[i] = tmp;
     }
     return ans;
 }
 
-vector<string> rotate(vector<string> shape) {
-    vector<string> ans(shape[0].size());
-    for(int i=0; i<shape[0].size(); i++){
-        for(int j=shape.size()-1; j>=0; j--){
-            ans[j] += shape[i][j];
+vector<string> rotate(vector<string> &b) {
+    vector<string> ans(b[0].size());
+    for(int j=0; j<b[0].size(); j++){
+        for(int i=(int)b.size()-1; i>=0; i--){
+            ans[j] += b[i][j];
         }
     }
     return ans;
 }
 
-int calc(vector<string> shape, int x, int y){
+int calc(vector<vector<int>> &a, vector<string> &b, int x, int y){
+    int n = a.size();
+    int m = a[0].size();
     int sum = 0;
-    for(int i=0; i<shape.size(); i++){
-        for(int j=0; j<shape[0].size(); j++){
-            if(shape[i][j] == '0') continue;
-            int nx = x+i, ny=y+j;
-            if(0<=nx && nx<N && 0<=ny&& ny<M){
-                sum += board[nx][ny];
-            } else return -1;
+    for(int i=0; i<b.size(); i++){
+        for(int j=0; j<b[0].size(); j++){
+            if(b[i][j] == '0') continue;
+            int nx = x+i;
+            int ny = y+j;
+            if(0<=nx && nx<n && 0<=ny&& ny<m){
+                sum += a[nx][ny];
+            }
+            else {
+                return -1;
+            }
         }
     }
     return sum;
 }
 
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cin>>N>>M; //N:세로, M:가로
-    for(int i=0;i<N; i++){
-        for(int j=0;j<M; j++){
-            cin>>board[i][j];
+    int n, m;
+    cin>>n>>m; //N:세로, M:가로
+    vector<vector<int>> a(n, vector<int>(m));
+    for(int i=0;i<n; i++){
+        for(int j=0;j<m; j++){
+            cin>>a[i][j];
         }
     }
 
-    int ret = 0;
-    for(int i=0; i<N; i++){
-        for(int j=0; j<M; j++){
-            for(auto &shape: shapes){
-                vector<string> s = shape;
-                for(int mir = 0; mir<2; i++){
+    int ans = 0;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            for(auto &block: blocks){
+                vector<string> b(block);
+                for(int mir = 0; mir<2; mir++){
                     for(int rot=0; rot<4;rot++){
-                        int cur = calc(s, i, j);
-                        if(cur!=-1 && cur>ret) ret=cur;
-                        s=rotate(s);
+                        int cur = calc(a, b, i, j);
+                        if(cur!=-1 && ans<cur) ans=cur;
+                        b=rotate(b);
                     }
-                    s=mirror(s);
+                    b=mirror(b);
                 }
             }
         }
     }
-    cout<<ret<<"\n";
+    cout<<ans<<"\n";
+    return 0;
 
  }
