@@ -3,4 +3,4 @@ project(codingtestFREEPASS)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(codingtestFREEPASS 14500.cpp)
+add_executable(codingtestFREEPASS 18290.cpp)
