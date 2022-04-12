@@ -72,14 +72,8 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_codingtestFREEPASS: phony || CMakeFiles/codingtestFREEPASS.dir
 
-build CMakeFiles/codingtestFREEPASS.dir/6603.cpp.o: CXX_COMPILER__codingtestFREEPASS_Debug /Users/heeyeon/CLionProjects/codingtestFREEPASS/6603.cpp || cmake_object_order_depends_target_codingtestFREEPASS
-  DEP_FILE = CMakeFiles/codingtestFREEPASS.dir/6603.cpp.o.d
-  FLAGS = -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++14
-  OBJECT_DIR = CMakeFiles/codingtestFREEPASS.dir
-  OBJECT_FILE_DIR = CMakeFiles/codingtestFREEPASS.dir
-
-build CMakeFiles/codingtestFREEPASS.dir/10430.cpp.o: CXX_COMPILER__codingtestFREEPASS_Debug /Users/heeyeon/CLionProjects/codingtestFREEPASS/10430.cpp || cmake_object_order_depends_target_codingtestFREEPASS
-  DEP_FILE = CMakeFiles/codingtestFREEPASS.dir/10430.cpp.o.d
+build CMakeFiles/codingtestFREEPASS.dir/1978.cpp.o: CXX_COMPILER__codingtestFREEPASS_Debug /Users/heeyeon/CLionProjects/codingtestFREEPASS/1978.cpp || cmake_object_order_depends_target_codingtestFREEPASS
+  DEP_FILE = CMakeFiles/codingtestFREEPASS.dir/1978.cpp.o.d
   FLAGS = -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -std=gnu++14
   OBJECT_DIR = CMakeFiles/codingtestFREEPASS.dir
   OBJECT_FILE_DIR = CMakeFiles/codingtestFREEPASS.dir
@@ -92,7 +86,7 @@ build CMakeFiles/codingtestFREEPASS.dir/10430.cpp.o: CXX_COMPILER__codingtestFRE
 #############################################
 # Link the executable codingtestFREEPASS
 
-build codingtestFREEPASS: CXX_EXECUTABLE_LINKER__codingtestFREEPASS_Debug CMakeFiles/codingtestFREEPASS.dir/6603.cpp.o CMakeFiles/codingtestFREEPASS.dir/10430.cpp.o
+build codingtestFREEPASS: CXX_EXECUTABLE_LINKER__codingtestFREEPASS_Debug CMakeFiles/codingtestFREEPASS.dir/1978.cpp.o
   FLAGS = -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk
   OBJECT_DIR = CMakeFiles/codingtestFREEPASS.dir
   POST_BUILD = :
